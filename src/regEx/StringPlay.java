@@ -19,8 +19,8 @@ public class StringPlay
 		char endreg = 'b';
 		String reg = "cc";
 		getCount(data,searchtext);
-		getstring2(data,start,end);
-		getstring (data,startreg,endreg,reg);
+		getstring(data,start,end);
+		getstring(data,startreg,endreg,reg);
 	} 
 
 	public static String readFileAsString(String fileName)throws Exception 
@@ -55,7 +55,7 @@ public class StringPlay
 		System.out.println("Count of string that starts with" +" "+startreg+ " " + "and ends with" +" "+endreg+ " " + "with the sequence"+ " " +reg+ " "+ "present somewhere in the string is" +" "+count);
 	}
 
-	static void getstring2 (String str,char start,char end) {
+	static void getstring(String str,char start,char end) {
 		final String regex = start+"[a-z]{2}"+end;
 		final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE | Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
 		final Matcher matcher = pattern.matcher(str);

@@ -3,6 +3,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,15 +13,46 @@ public class StringPlay
 	public static void main(String[] args) throws Exception 
 	{ 
 		String data = readFileAsString(System.getProperty("user.dir")  + "\\config_data\\exercise_data.txt"); 
-		String searchtext = "bee";
-		char start = 'a';
-		char end = 'g';
-		char startreg = 'd';
-		char endreg = 'b';
-		String reg = "cc";
+		Scanner in = new Scanner(System.in);
+		System.out.println("Enter string that you would like to search in the file:");
+		String searchtext = in.nextLine();
 		getCount(data,searchtext);
-		getstring(data,start,end);
-		getstring(data,startreg,endreg,reg);
+
+		Scanner lg = new Scanner(System.in);
+		System.out.println("Enter length of the substring you want to search in the file:");
+		String chard = lg.nextLine();
+
+		Scanner st = new Scanner(System.in);
+		System.out.println("Enter the starting charatcher of substring you want to search in the file:");
+		String start = st.nextLine();
+
+		Scanner ed = new Scanner(System.in);
+		System.out.println("Enter the ending charatcher of substring you want to search in the file:");
+		String end = ed.nextLine();
+
+		int charLength = Integer.valueOf(chard);
+
+		getRegstringCount(data,charLength,start,end);
+
+		Scanner lgt = new Scanner(System.in);
+		System.out.println("Enter length of the substring you want to search in the file:");
+		String chardd = lgt.nextLine();
+
+		Scanner st1 = new Scanner(System.in);
+		System.out.println("Enter the starting charatcher of substring you want to search in the file:");
+		String startreg = st1.nextLine();
+
+		Scanner ed1 = new Scanner(System.in);
+		System.out.println("Enter the ending charatcher of substring you want to search in the file:");
+		String endreg = ed1.nextLine();
+		
+		Scanner sq = new Scanner(System.in);
+		System.out.println("Enter the sequence charatcher of substring you want to search in the file:");
+		String reg = sq.nextLine();
+		
+		int charlen = Integer.valueOf(chardd);
+		
+		getRegstringCount(data,charlen, startreg,endreg,reg);
 	} 
 
 	public static String readFileAsString(String fileName)throws Exception 
@@ -39,11 +71,11 @@ public class StringPlay
 			idx++;
 			count++;
 		}
-		System.out.println("Count of string with" +" "+searchtext+ " "+ "is" + " " +count);
+		System.out.println("Count of string" +" "+searchtext+ " "+ "is" + " " +count);
 	}
 
-	static void getstring (String str, char startreg,char endreg, String reg) {
-		final String regex = startreg+"(["+reg+"]){2}[a-z]{4}"+endreg;
+	static void getRegstringCount (String str, int charlen, String startreg,String endreg, String reg) {
+		final String regex = startreg+"(["+reg+"]){2}[a-z]{"+(charlen -4)+"}"+endreg;
 		final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE | Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
 		final Matcher matcher = pattern.matcher(str);
 		ArrayList <String> countarray = new ArrayList();
@@ -55,8 +87,8 @@ public class StringPlay
 		System.out.println("Count of string that starts with" +" "+startreg+ " " + "and ends with" +" "+endreg+ " " + "with the sequence"+ " " +reg+ " "+ "present somewhere in the string is" +" "+count);
 	}
 
-	static void getstring(String str,char start,char end) {
-		final String regex = start+"[a-z]{2}"+end;
+	static void getRegstringCount(String str,int charLength,String start,String end) {
+		final String regex = start+"[a-z]{"+(charLength-2)+"}"+end;
 		final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE | Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
 		final Matcher matcher = pattern.matcher(str);
 		ArrayList <String> countarray = new ArrayList();
@@ -67,6 +99,4 @@ public class StringPlay
 		int count = countarray.size();
 		System.out.println("Count of string that starts with" +" "+start+ " " + "and ends with" +" "+end+ " " + "is" +" "+count);
 	}
-
 } 
-

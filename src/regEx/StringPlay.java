@@ -21,6 +21,14 @@ public class StringPlay
 		Scanner lg = new Scanner(System.in);
 		System.out.println("Enter length of the substring you want to search in the file:");
 		String chard = lg.nextLine();
+		int charLength;
+		try {
+			charLength = Integer.valueOf(chard);
+			System.out.println(charLength);
+		}
+		catch(Exception e) {
+			throw new IllegalArgumentException("Illegal string length, Please enter a valid integer ");
+		};
 
 		Scanner st = new Scanner(System.in);
 		System.out.println("Enter the starting charatcher of substring you want to search in the file:");
@@ -30,13 +38,21 @@ public class StringPlay
 		System.out.println("Enter the ending charatcher of substring you want to search in the file:");
 		String end = ed.nextLine();
 
-		int charLength = Integer.valueOf(chard);
+
 
 		getRegstringCount(data,charLength,start,end);
 
 		Scanner lgt = new Scanner(System.in);
 		System.out.println("Enter length of the substring you want to search in the file:");
 		String chardd = lgt.nextLine();
+		int charlen;
+		try {
+			charlen = Integer.valueOf(chardd);
+			System.out.println(charLength);
+		}
+		catch(Exception e) {
+			throw new IllegalArgumentException("Illegal string length, Please enter a valid integer ");
+		};
 
 		Scanner st1 = new Scanner(System.in);
 		System.out.println("Enter the starting charatcher of substring you want to search in the file:");
@@ -45,15 +61,14 @@ public class StringPlay
 		Scanner ed1 = new Scanner(System.in);
 		System.out.println("Enter the ending charatcher of substring you want to search in the file:");
 		String endreg = ed1.nextLine();
-		
+
 		Scanner sq = new Scanner(System.in);
 		System.out.println("Enter the sequence charatcher of substring you want to search in the file:");
 		String reg = sq.nextLine();
-		
-		int charlen = Integer.valueOf(chardd);
-		
+
 		getRegstringCount(data,charlen, startreg,endreg,reg);
 	} 
+
 
 	public static String readFileAsString(String fileName)throws Exception 
 	{ 
@@ -80,7 +95,6 @@ public class StringPlay
 		final Matcher matcher = pattern.matcher(str);
 		ArrayList <String> countarray = new ArrayList();
 		while (matcher.find()) {
-			//System.out.println("Full match: " + matcher.group(0));
 			countarray.add(matcher.group(0));
 		}
 		int count = countarray.size();
@@ -93,7 +107,6 @@ public class StringPlay
 		final Matcher matcher = pattern.matcher(str);
 		ArrayList <String> countarray = new ArrayList();
 		while (matcher.find()) {
-			//System.out.println("Full match: " + matcher.group(0));
 			countarray.add(matcher.group(0));
 		}
 		int count = countarray.size();

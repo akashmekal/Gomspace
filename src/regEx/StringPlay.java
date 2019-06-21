@@ -24,22 +24,16 @@ public class StringPlay
 		int charLength;
 		try {
 			charLength = Integer.valueOf(chard);
-			System.out.println(charLength);
 		}
 		catch(Exception e) {
 			throw new IllegalArgumentException("Illegal string length, Please enter a valid integer ");
 		};
-
 		Scanner st = new Scanner(System.in);
 		System.out.println("Enter the starting charatcher of substring you want to search in the file:");
 		String start = st.nextLine();
-
 		Scanner ed = new Scanner(System.in);
 		System.out.println("Enter the ending charatcher of substring you want to search in the file:");
 		String end = ed.nextLine();
-
-
-
 		getRegstringCount(data,charLength,start,end);
 
 		Scanner lgt = new Scanner(System.in);
@@ -48,25 +42,21 @@ public class StringPlay
 		int charlen;
 		try {
 			charlen = Integer.valueOf(chardd);
-			System.out.println(charLength);
 		}
 		catch(Exception e) {
 			throw new IllegalArgumentException("Illegal string length, Please enter a valid integer ");
 		};
-
 		Scanner st1 = new Scanner(System.in);
 		System.out.println("Enter the starting charatcher of substring you want to search in the file:");
 		String startreg = st1.nextLine();
-
 		Scanner ed1 = new Scanner(System.in);
 		System.out.println("Enter the ending charatcher of substring you want to search in the file:");
 		String endreg = ed1.nextLine();
-
 		Scanner sq = new Scanner(System.in);
 		System.out.println("Enter the sequence charatcher of substring you want to search in the file:");
 		String reg = sq.nextLine();
-
 		getRegstringCount(data,charlen, startreg,endreg,reg);
+
 	} 
 
 
